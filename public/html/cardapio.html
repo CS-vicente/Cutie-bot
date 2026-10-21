@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      background-color: #c47bad;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 30px 20px;
+      text-align: center; 
+      font-family: Georgia, 'Times New Roman', Times, serif; 
+    }
+    h1 {
+      font-size: 60px;
+      margin: 10px 0 5px 0;
+      color: #ffd4ef;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+      letter-spacing: 2px;
+    }
+    .subtitulo {
+      color: #fff0f8;
+      font-size: 16px;
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+    .cardapio-container {
+      width: 100%;
+      max-width: 650px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+    .categoria-secao {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 2px dashed #ffd4ef;
+      border-radius: 25px;
+      padding: 20px 25px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    .categoria-titulo {
+      color: #fff;
+      font-size: 22px;
+      margin-top: 0;
+      margin-bottom: 18px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+    }
+    .item-cardapio {
+      background-color: #ffffff;
+      border-radius: 18px;
+      padding: 15px 20px;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 12px rgba(113, 48, 83, 0.12);
+      text-align: left;
+    }
+    .item-cabecalho {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .item-nome {
+      font-weight: bold;
+      color: #713053;
+      font-size: 18px;
+    }
+    .item-preco {
+      background-color: #ffd4ef;
+      color: #713053;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'Courier New', Courier, monospace;
+    }
+    .item-descricao {
+      color: #8c5372;
+      font-size: 14px;
+      margin: 0;
+      line-height: 1.4;
+    }
+    .btn-fale-conosco {
+      background-color: #ffffff;
+      color: #713053;
+      font-size: 18px;
+      font-weight: bold;
+      font-family: cursive;
+      padding: 15px 40px;
+      width: 100%;
+      max-width: 650px;
+      border: none;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      margin-bottom: 30px;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+    .btn-fale-conosco:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      background-color: #fff0f8;
+    }
+    .btn-voltar {
+      background-color: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: bold;
+      font-family: cursive;
+      padding: 10px 25px;
+      border: 2px solid #ffd4ef;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      backdrop-filter: blur(5px);
+    }
+    .btn-voltar:hover {
+      transform: translateY(-2px);
+      background-color: #ffffff;
+      color: #713053;
+    }
+    footer {
+      margin-top: auto;
+      color: #ffffff;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="/" class="btn-voltar">‹ Voltar à Página Inicial</a>
+  <h1>✦ CARDÁPIO ✦</h1>
+  <p class="subtitulo">Sabores especiais</p>
+
+  <main class="cardapio-container">
+    <section class="categoria-secao">
+      <h2 class="categoria-titulo">Doces & Especialidades</h2>
+      <div class="item-cardapio">
+        <div class="item-cabecalho">
+          <span class="item-nome">Pão de queijo mini</span>
+          <span class="item-preco">R$ 10,00</span>
+        </div>
+        <p class="item-descricao">Feito de queijo gourmet.</p>
+      </div>
+      <div class="item-cardapio">
+        <div class="item-cabecalho">
+          <span class="item-nome">GRAMMY Golden beijinho</span>
+          <span class="item-preco">R$ 15,00</span>
+        </div>
+        <p class="item-descricao">Beijinho delicado em forma de camisa na cor dourada.</p>
+      </div>
+      <div class="item-cardapio">
+        <div class="item-cabecalho">
+          <span class="item-nome">Bling Necklace</span>
+          <span class="item-preco">R$ 20,00</span>
+        </div>
+        <p class="item-descricao">Donut com massa leve, recheado de creme e cobertura de chocolate branco.</p>
+      </div>
+    </section>
+
+    <section class="categoria-secao">
+      <h2 class="categoria-titulo">Bebidas & Cafés</h2>
+      <div class="item-cardapio">
+        <div class="item-cabecalho">
+          <span class="item-nome">Pink Latte Robux</span>
+          <span class="item-preco">200⏣ Robux</span>
+        </div>
+        <p class="item-descricao">Café expresso suave, leite vaporizado com sabor de baunilha e calda rosa especial.</p>
+      </div>
+      <div class="item-cardapio">
+        <div class="item-cabecalho">
+          <span class="item-nome">Eu amo o Brasil</span>
+          <span class="item-preco">R$ 10,00</span>
+        </div>
+        <p class="item-descricao">Café extra-forte com um toque especial de guaraná.</p>
+      </div>
+      <div class="item-cardapio">
+        <div class="item-cabecalho">
+          <span class="item-nome">Eu odeio o Brasil</span>
+          <span class="item-preco">R$ 10,00</span>
+        </div>
+        <p class="item-descricao">Café expresso suave combinado com Coca-Cola.</p>
+      </div>
+    </section>
+  </main>
+
+  <a href="/chat" class="btn-fale-conosco">˗ˏˋ ꒰ Fale conosco ✉︎ ꒱ ˎˊ˗</a>
+  <footer>&copy; StarRobux ★ <br> . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. </footer>
+
+</body>
+</html>

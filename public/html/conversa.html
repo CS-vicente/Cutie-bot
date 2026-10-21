@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      background-color: #c47bad;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      text-align: center; 
+      font-family: Georgia, 'Times New Roman', Times, serif; 
+    }
+    h1 {
+      font-size: 50px;
+      margin: 0 0 15px 0;
+      color: #ffd4ef;
+    }
+    .chat-container {
+      background-color: #713053;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      max-width: 500px;
+      width: 100%;
+      height: 480px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      margin-bottom: auto;
+      margin-top: 10px;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: left;
+    }
+    .message {
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 15px;
+      line-height: 1.5;
+      max-width: 85%;
+      word-wrap: break-word;
+    }
+    .message.bot {
+      background-color: #fce8f3;
+      color: #582440;
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+    }
+    .message.user {
+      background-color: #381729;
+      color: #ffffff;
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+    }
+    .message strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 11px;
+      opacity: 0.85;
+      font-family: cursive;
+    }
+    /* Estilo para imagens enviadas no chat */
+    .message img.chat-img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 6px;
+      display: block;
+    }
+    .chat-input-area {
+      display: flex;
+      padding: 15px;
+      background-color: #fff9fc;
+      border-top: 1px solid #f0d6e8;
+      gap: 10px;
+      align-items: center;
+    }
+    .chat-input {
+      flex: 1;
+      padding: 10px 14px;
+      font-size: 14px;
+      border: 1px solid #d8a6c7;
+      border-radius: 8px;
+      outline: none;
+      font-family: Georgia, serif;
+      background-color: #ffffff;
+    }
+    .chat-input:focus { border-color: #381729; }
+    .btn-enviar {
+      background-color: #381729; 
+      color: white;             
+      font-size: 14px;
+      font-weight: bold;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: cursive;
+    }
+    footer { margin-top: auto; color: #ffffff; padding-top: 10px; }
+
+    /* EFEITO DE TERROR PSICOLÓGICO MÁXIMO (GLITCH PESADO) */
+    #jumpscare-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #1a0000;
+      z-index: 99999;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    #jumpscare-img {
+      max-width: 100%;
+      max-height: 100%;
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain;
+      animation: ultraShake 0.03s infinite;
+    }
+    @keyframes ultraShake {
+      0% { transform: translate(12px, -8px) rotate(-4deg) scale(1.1); filter: drop-shadow(10px 10px red); }
+      20% { transform: translate(-10px, 10px) rotate(5deg) scale(0.95); filter: drop-shadow(-10px -10px blue); }
+      40% { transform: translate(8px, 12px) rotate(-2deg) scale(1.05); filter: drop-shadow(10px -10px green); }
+      60% { transform: translate(-12px, -10px) rotate(4deg) scale(1.15); filter: drop-shadow(-10px 10px magenta); }
+      80% { transform: translate(5px, -5px) rotate(-5deg) scale(0.9); filter: drop-shadow(5px 5px yellow); }
+      100% { transform: translate(-8px, 8px) rotate(3deg) scale(1.0); filter: drop-shadow(0 0 20px white); }
+    }
+    .glitch-psicodelico {
+      animation: flashFundo 0.08s infinite alternate;
+    }
+    @keyframes flashFundo {
+      0% { filter: invert(100%) contrast(400%) saturate(500%) hue-rotate(0deg); background-color: black; }
+      50% { filter: invert(0%) contrast(500%) saturate(800%) hue-rotate(180deg); background-color: darkred; }
+      100% { filter: invert(80%) contrast(300%) saturate(300%) hue-rotate(270deg); background-color: purple; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="jumpscare-overlay">
+    <img id="jumpscare-img" src="images/jumpscare.webp" alt="Jumpscare">
+  </div>
+
+  <audio id="fnaf-audio" src="audio/jumpscare.mp3" preload="auto"></audio>
+
+  <h1>STAR ⟡ ROBUX</h1>
+
+  <div class="chat-container">
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot">
+        <strong>✦ cutieBot</strong>
+        Seja muito bem-vindo à nossa cafeteria! Acreditamos que já tenha visto o nosso cardápio. Nossa equipe de cinco pessoas agradece sua visita!! ♡
+      </div>
+    </div>
+
+    <div class="chat-input-area">
+      <input type="text" id="userInput" class="chat-input" placeholder="Digite sua mensagem...">
+      <button id="sendBtn" class="btn-enviar">ENVIAR</button>
+    </div>
+  </div>
+
+  <footer>&copy; StarRobux ★ <br> . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. </footer>
+
+  <script>
+    const messagesContainer = document.getElementById('chatMessages');
+    const userInput = document.getElementById('userInput');
+    const sendBtn = document.getElementById('sendBtn');
+
+    const caminhoDaImagem = "images/jumpscare.webp";
+
+    function dispararJumpscare() {
+      const overlay = document.getElementById('jumpscare-overlay');
+      const audio = document.getElementById('fnaf-audio');
+      
+      overlay.style.display = 'flex';
+      document.body.classList.add('glitch-psicodelico');
+
+      audio.currentTime = 0;
+      audio.volume = 1.0;
+      audio.play().catch(err => console.log("Áudio bloqueado:", err));
+
+      setTimeout(() => {
+        overlay.style.display = 'none';
+        document.body.classList.remove('glitch-psicodelico');
+        audio.pause();
+      }, 1800);
+    }
+
+    // Função que aplica a zoeira do Roblox (tags ###) visualmente
+    function aplicarTagsRoblox(texto) {
+      const palavras = texto.split(" ");
+      let mudou = false;
+
+      const resultado = palavras.map(palavra => {
+        // Se a palavra tiver mais de 2 letras, tem 40% de chance de virar tags
+        if (palavra.length > 2 && Math.random() < 0.4) {
+          mudou = true;
+          return "#".repeat(palavra.length);
+        }
+        return palavra;
+      });
+
+      // Garante que se o sorteio não alterou nada, pelo menos a última palavra maior que 2 letras vira tag
+      if (!mudou && resultado.length > 0) {
+        for (let i = resultado.length - 1; i >= 0; i--) {
+          if (resultado[i].length > 2) {
+            resultado[i] = "#".repeat(resultado[i].length);
+            break;
+          }
+        }
+      }
+
+      return resultado.join(" ");
+    }
+
+    async function enviarMensagem() {
+      const textoOriginal = userInput.value.trim();
+      if (!textoOriginal) return;
+
+      const textoLower = textoOriginal.toLowerCase();
+      const temRoblox = textoLower.includes("roblox") || textoLower.includes("oof") || textoLower.includes("noob") || textoLower.includes("tag");
+      const chanceAleatoria = Math.random() < 0.3; // 30% de chance aleatória de dar a zoeira
+
+      // Cria a versão com tags para exibir na tela do usuário (sem alterar a resposta do bot)
+      let textoParaExibir = textoOriginal;
+      if (temRoblox || chanceAleatoria) {
+        textoParaExibir = aplicarTagsRoblox(textoOriginal);
+      }
+
+      // Renderiza a mensagem do usuário já com as tags visuais
+      messagesContainer.innerHTML += `
+        <div class="message user">
+          <strong>Você</strong>
+          ${textoParaExibir}
+        </div>
+      `;
+      userInput.value = '';
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+      try {
+        // Envia o texto ORIGINAL intacto para o seu api.ts / bot.ts processar normalmente
+        const response = await fetch('/api/mensagem', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ texto: textoOriginal })
+        });
+        const data = await response.json();
+
+        let respostaBot = data.resposta;
+
+        if (respostaBot === "[JUMPSCARE]") {
+          dispararJumpscare();
+          
+          setTimeout(() => {
+            messagesContainer.innerHTML += `
+              <div class="message bot">
+                <strong>✦ cutieBot</strong>
+                ⚠️ Opa! A gerência da StarRobux não tolera esse tipo de linguagem por aqui. Fotografei você agora pouco através da câmera do seu PC:
+                <img src="${caminhoDaImagem}" class="chat-img" alt="Flagrado">
+              </div>
+            `;
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+          }, 1900); 
+          return; 
+        }
+
+        messagesContainer.innerHTML += `
+          <div class="message bot">
+            <strong>✦ cutieBot</strong>
+            ${respostaBot}
+          </div>
+        `;
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      } catch (error) {
+        messagesContainer.innerHTML += `
+          <div class="message bot">
+            <strong>✦ cutieBot</strong>
+            Desculpe, ocorreu um erro de conexão com o servidor.
+          </div>
+        `;
+      }
+    }
+
+    sendBtn.addEventListener('click', enviarMensagem);
+    userInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') enviarMensagem();
+    });
+  </script>
+
+</body>
+</html>

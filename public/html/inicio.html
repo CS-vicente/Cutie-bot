@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bem-Vindo</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      background-color: #c47bad;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      text-align: center; 
+      font-family: Georgia, 'Times New Roman', Times, serif; 
+    }
+    .botoes-container {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 10px;
+      margin-bottom: auto; 
+    }
+    h1 {
+      font-size: 80px;
+      margin: 20px 0 10px 0;
+      color: #ffd4ef;
+    }
+    .boas-vindas {
+      color: #ffffff;
+      font-size: 18px;
+      max-width: 600px;
+      line-height: 1.5;
+      margin: 0 0 20px 0;
+      font-family: Georgia, serif;
+    }
+    .btn-purple {
+      background-color: #713053; 
+      color: white;          
+      font-size: 24px;
+      font-weight: bold;
+      padding: 16px 0;
+      width: 250px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      font-family: cursive;
+    }
+    .btn-purple:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      background-color: #582440;
+    }
+    .btn-fale-conosco {
+      background-color: #ffffff;
+      color: #713053;
+      font-size: 20px;
+      font-weight: bold;
+      font-family: cursive;
+      padding: 15px 40px;
+      width: 100%;
+      max-width: 600px;
+      border: none;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      margin-top: 10px;
+      margin-bottom: auto;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+    .btn-fale-conosco:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      background-color: #f8f8f8;
+    }
+    footer {
+      margin-top: auto;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="botoes-container">
+    <a href="/cardapio" class="btn-purple">˖ ࣪⊹CARDÁPIO࣪⊹ ˖</a>
+    <a href="/lojas" class="btn-purple">˖ ࣪⊹LOJAS࣪⊹ ˖</a>
+  </div>
+
+  <h1>STAR ⟡ ROBUX</h1>
+
+  <p class="boas-vindas">Seja muito bem-vindo a nossa cafeteria! Acreditamos que já tenha visto o nosso cardápio. Abaixo, temos o saiba mais. Nossa equipe de cinco pessoas agradece!!</p>
+
+  <a href="/chat" class="btn-fale-conosco">˗ˏˋ ꒰ Fale conosco ✉︎︎ ꒱ ˎˊ˗</a>
+
+  <footer>&copy; StarRobux ★ <br> . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. </footer>
+
+</body>
+</html>

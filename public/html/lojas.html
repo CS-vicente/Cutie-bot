@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nossas Lojas</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      background-color: #c47bad;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      text-align: center; 
+      font-family: Georgia, 'Times New Roman', Times, serif; 
+    }
+    .btn-voltar {
+      background-color: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: bold;
+      font-family: cursive;
+      padding: 10px 25px;
+      border: 2px solid #ffd4ef;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      backdrop-filter: blur(5px);
+    }
+    .btn-voltar:hover {
+      transform: translateY(-2px);
+      background-color: #ffffff;
+      color: #713053;
+    }
+    .btn-fale-conosco {
+      background-color: #ffffff;
+      color: #713053;
+      font-size: 20px;
+      font-weight: bold;
+      font-family: cursive;
+      padding: 15px 40px;
+      width: 100%;
+      max-width: 600px;
+      border: none;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .lojas-section {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 20px;
+      max-width: 600px;
+      width: 100%;
+      margin-bottom: 20px;
+      backdrop-filter: blur(5px);
+    }
+    .lojas-section h2 {
+      color: #ffd4ef;
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    .lojas-lista {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: #ffffff;
+      text-align: left;
+    }
+    .lojas-lista li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 16px;
+    }
+    .lojas-lista li:last-child { border-bottom: none; }
+    .lojas-lista strong { color: #ffd4ef; }
+    footer { margin-top: auto; color: #ffffff; }
+  </style>
+</head>
+<body>
+
+  <a href="/" class="btn-voltar">‹ Voltar à Página Inicial</a>
+  <a href="/chat" class="btn-fale-conosco"> ˗ˏˋ ꒰ Fale conosco ✉︎ ꒱ ˎˊ˗ </a>
+
+  <section class="lojas-section">
+    <h2>Nossas Lojas ★</h2>
+    <ul class="lojas-lista">
+      <li><strong>São Paulo (SP):</strong> Av. Paulista, 1000 - Centro</li>
+      <li><strong>Rio de Janeiro (RJ):</strong> Copacabana, 500 - Posto 4</li>
+      <li><strong>Curitiba (PR):</strong> Rua XV de Novembro, 250 - Centro</li>
+      <li><strong>Salto (SP):</strong> Praça da Matriz, 45 - Centro</li>
+    </ul>
+  </section>
+
+  <footer>&copy; StarRobux ★ <br> . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. </footer>
+
+</body>
+</html>
